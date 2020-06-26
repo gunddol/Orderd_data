@@ -22,7 +22,7 @@ def data_sort(data):
     user_data_list = [""] * 5000
     user_num = 2
     row_index = "A"+ str(user_num)
-    while data[row_index].value != None:
+    while (data[row_index].value != None and data["B" + str(user_num)].value != None and data["C" + str(user_num)].value != None):
         user_data_dic = {}
         for i in range(data_count):
             tmp = combo_list[yes_data[i]].get()
@@ -74,10 +74,13 @@ def sheet_export():
         for i in range(1, user_num - 1):
             row_num = str(int(start_row.get()) + i - 1)
             load_sheet['A' + row_num] = user_data_list[i]['받는분']
-            if '연락처2' in user_data_list[i]:
-                load_sheet['B' + row_num] = user_data_list[i]['연락처2']
-            if '연락처1' in user_data_list[i]:
-                load_sheet['C' + row_num] = user_data_list[i]['연락처1']
+
+            if '주연락처' in user_data_list[i]:
+                load_sheet['B' + row_num] = user_data_list[i]['주연락처']
+
+            if '부연락처' in user_data_list[i]:
+                load_sheet['C' + row_num] = user_data_list[i]['부연락처']
+
             load_sheet['E' + row_num] = user_data_list[i]['주소']
             load_sheet['I' + row_num] = user_data_list[i]['구매수량']
             if '배송메세지' in user_data_list[i]:
@@ -103,7 +106,7 @@ def sheet_export():
 
 window = Tk()
 window.title("발주 데이터 양식 Coverter")
-window.geometry("940x300")
+window.geometry("950x300")
 window.resizable(False, False)
 
 label1 = ttk.Label(window, text="발주서",anchor="center")
@@ -139,12 +142,12 @@ info_3.grid(row=2,column=2)
 combo_3 = ttk.Combobox(read_frame, values=cell_column, width=5)
 combo_3.grid(row=3,column=2)
 
-info_4 = ttk.Label(read_frame, text="연락처1",width=10,anchor="center")
+info_4 = ttk.Label(read_frame, text="주연락처",width=10,anchor="center")
 info_4.grid(row=2,column=3)
 combo_4 = ttk.Combobox(read_frame, values=cell_column, width=5)
 combo_4.grid(row=3,column=3)
 
-info_5 = ttk.Label(read_frame, text="연락처2",width=10,anchor="center")
+info_5 = ttk.Label(read_frame, text="부연락처",width=10,anchor="center")
 info_5.grid(row=2,column=4)
 combo_5 = ttk.Combobox(read_frame, values=cell_column, width=5)
 combo_5.grid(row=3,column=4)
@@ -222,8 +225,8 @@ warning = ttk.Label(window, text="※주의사항※\n-불러오는 파일의 Sh
 warning.place(x=10,y=210)
 
 copy_right = ttk.Label(window, text = "COPYRIGHT ⓒ 2020 GUNHEE ALL RIGHTS RESERVED.")
-copy_right.place(x=640,y=260)
+copy_right.place(x=650,y=260)
 
-version = ttk.Label(window, text = "v0.0.1")
-version.place(x=900,y=280)
+version = ttk.Label(window, text = "v0.0.2")
+version.place(x=910,y=280)
 window.mainloop()
