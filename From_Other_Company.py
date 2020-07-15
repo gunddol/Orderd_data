@@ -22,7 +22,7 @@ def data_sort(data):
     user_data_list = [""] * 5000
     user_num = 2
     row_index = "A"+ str(user_num)
-    while (data[row_index].value != None and data["B" + str(user_num)].value != None and data["C" + str(user_num)].value != None):
+    while (data[row_index].value != None):
         user_data_dic = {}
         for i in range(data_count):
             tmp = combo_list[yes_data[i]].get()
@@ -221,12 +221,12 @@ check_accepted2.grid(row=0,column=4)
 write_frame.place(x=10,y=180)
 
 
-warning = ttk.Label(window, text="※주의사항※\n-불러오는 파일의 Sheet1에 자료가 담겨있어야 합니다.\n-저장하는 파일의 시트이름은 '택배출고요청 발주서'로 저장되어있어야 합니다.")
+warning = ttk.Label(window, text="※주의사항※\n-불러오는 파일의 Sheet1에 자료가 담겨있어야 합니다.\n-저장하는 파일의 시트이름은 '택배출고요청 발주서'로 저장되어있어야 합니다.\n-입력하는 시트에 주문내역이 없는 행은 내용을 모두 비워야합니다.")
 warning.place(x=10,y=210)
 
 copy_right = ttk.Label(window, text = "COPYRIGHT ⓒ 2020 GUNHEE ALL RIGHTS RESERVED.")
 copy_right.place(x=650,y=260)
 
-version = ttk.Label(window, text = "v0.0.2")
+version = ttk.Label(window, text = "v0.0.3")
 version.place(x=910,y=280)
 window.mainloop()
